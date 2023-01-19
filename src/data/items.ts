@@ -20,13 +20,13 @@ export const items: ItemType[] = [
     price: 500,
   },
   {
-    date: new Date(2023, 0, 15),
+    date: new Date(2023, 1, 15),
     category: "salary",
     title: "Salário CLT",
     price: 1400,
   },
   {
-    date: new Date(2023, 0, 15),
+    date: new Date(2023, 2, 15),
     category: "CNH",
     title: "Parcela CNH",
     price: 36,

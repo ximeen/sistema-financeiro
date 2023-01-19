@@ -6,7 +6,8 @@ import { ItemType } from "./types/ItemTypes"
 import { CategoryType } from "./types/CategorieTypes"
 import { categories } from "./data/categories"
 import { items } from "./data/items"
-import { getCurrentMounth, filterListByMounth } from "./services/dateFilter"
+import { getCurrentMounth, filterListByMonth } from "./services/dateFilter"
+import { TableArea } from "./components/TableArea"
 
 function App() {
 
@@ -15,12 +16,14 @@ function App() {
   const [currentMounth, setCurrentMounth] = useState(getCurrentMounth())
 
   useEffect(() => {
-    setFilteredListItems(filterListByMounth(listItems, currentMounth))
+    setFilteredListItems(filterListByMonth(listItems, currentMounth))
   }, [listItems, currentMounth])
   return (
     <S.Container>
       <Header />
-      <S.ContentMain>Content Main</S.ContentMain>
+      <S.ContentMain>
+        <TableArea list={filteredListItems} />
+      </S.ContentMain>
     </S.Container>
   )
 }
