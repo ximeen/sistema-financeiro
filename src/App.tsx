@@ -7,6 +7,7 @@ import { CategoryType } from "./types/CategorieTypes"
 import { categories } from "./data/categories"
 import { items } from "./data/items"
 import { getCurrentMounth, filterListByMonth } from "./services/dateFilter"
+import { InfoArea } from "./components/infoArea"
 import { TableArea } from "./components/TableArea"
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
     <S.Container>
       <Header />
       <S.ContentMain>
+        <InfoArea />
         <TableArea list={filteredListItems} />
       </S.ContentMain>
     </S.Container>

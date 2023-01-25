@@ -1,5 +1,6 @@
 import * as S from "./styles"
 import { ItemType } from "../../types/ItemTypes"
+import { TableItem } from "../TableItem"
 
 interface Props {
   list: ItemType[]
@@ -18,12 +19,7 @@ export function TableArea({ list }: Props) {
       </thead>
       <tbody>
         {list.map((item, index) => (
-          <tr key={index}>
-            <td></td>
-            <td></td>
-            <td>{item.title}</td>
-            <td></td>
-          </tr>
+          <TableItem key={index} item={item} />
         ))}
       </tbody>
     </S.Table>

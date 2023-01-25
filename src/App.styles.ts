@@ -6,5 +6,5 @@ export const ContentMain = styled.main`
   margin: auto;
   margin-bottom: 50px;
   max-width: 980px;
-  padding: 4rem;
+  padding: 0 4rem;
 `;
