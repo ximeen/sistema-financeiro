@@ -26,9 +26,9 @@ export const items: ItemType[] = [
     price: 1400,
   },
   {
-    date: new Date(2023, 2, 15),
-    category: "CNH",
+    date: new Date(2023, 1, 15),
+    category: "transport",
     title: "Parcela CNH",
-    price: 36,
+    price: 600,
   },
 ];

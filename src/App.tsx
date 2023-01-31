@@ -19,11 +19,19 @@ function App() {
   useEffect(() => {
     setFilteredListItems(filterListByMonth(listItems, currentMounth))
   }, [listItems, currentMounth])
+
+  function handleMonthChange(newMonth: string) {
+    setCurrentMounth(newMonth)
+  }
+
   return (
     <S.Container>
       <Header />
       <S.ContentMain>
-        <InfoArea />
+        <InfoArea
+          currentMonth={currentMounth}
+          onMonthChange={handleMonthChange}
+        />
         <TableArea list={filteredListItems} />
       </S.ContentMain>
     </S.Container>

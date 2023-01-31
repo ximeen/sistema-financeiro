@@ -6,4 +6,31 @@ export const Container = styled.div`
   border-radius: 10px;
   padding: 20px;
   margin-top: -40px;
+
+  display: flex;
+  align-items: center;
+`;
+
+export const MonthArea = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: center;
+`;
+
+export const MonthArrow = styled.div`
+  text-align: center;
+  cursor: pointer;
+`;
+
+export const MonthTitle = styled.h1`
+  flex: 1;
+  font-size: 1.4rem;
+  text-align: center;
+  max-width: 250px;
+  width: full;
+`;
+
+export const ResumeArea = styled.div`
+  flex: 1;
+  display: flex;
 `;
