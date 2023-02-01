@@ -17,7 +17,7 @@ export function TableItem({ item }: PropsItem) {
       </S.TableColum>
       <S.TableColum>{item.title}</S.TableColum>
       <S.TableColum>
-        <S.Value color={categories[item.category].expense ? 'red' : 'green'}>
+        <S.Value color={categories[item.category].expense ? '#dc2626' : '#4ade80'}>
           R$ {item.price}
         </S.Value>
       </S.TableColum>

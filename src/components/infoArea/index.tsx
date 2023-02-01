@@ -1,15 +1,19 @@
 import * as S from "./styles"
 import { CaretLeft, CaretRight } from "phosphor-react"
+
 import { formateCurrentMonth } from "../../services/dateFilter"
+import { ResumeItem } from "../ResumeItem"
 
 interface currentMonthProps {
   currentMonth: string,
-  onMonthChange: (newMonth: string) => void
+  onMonthChange: (newMonth: string) => void,
+  income: number,
+  expenses: number,
 }
 
-export function InfoArea({ currentMonth, onMonthChange }: currentMonthProps) {
+export function InfoArea({ currentMonth, onMonthChange, income, expenses }: currentMonthProps) {
 
-  function hadlePreviouMonth() {
+  function hanlePreviousMonth() {
     let [year, month] = currentMonth.split("-")
     let currentDate = new Date(parseInt(year), parseInt(month) - 1, 1)
     currentDate.setMonth(currentDate.getMonth() - 1)
@@ -28,7 +32,7 @@ export function InfoArea({ currentMonth, onMonthChange }: currentMonthProps) {
     <S.Container>
       <S.MonthArea>
 
-        <S.MonthArrow onClick={hadlePreviouMonth}>
+        <S.MonthArrow onClick={hanlePreviousMonth}>
           <CaretLeft size={24} />
         </S.MonthArrow>
 
@@ -40,7 +44,15 @@ export function InfoArea({ currentMonth, onMonthChange }: currentMonthProps) {
 
       </S.MonthArea>
 
-      <S.ResumeArea></S.ResumeArea>
+      <S.ResumeArea>
+        <ResumeItem title="Receitas" value={income} />
+        <ResumeItem title="Despesas" value={expenses} />
+        <ResumeItem
+          title="Balanço"
+          value={income - expenses}
+          color={(income - expenses) < 0 ? "#dc2626" : "#4ade80"} />
+
+      </S.ResumeArea>
     </S.Container>
   )
 }
