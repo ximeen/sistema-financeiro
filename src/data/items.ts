@@ -34,7 +34,7 @@ export const items: ItemType[] = [
   {
     date: new Date(2023, 1, 15),
     category: "food",
-    title: "Rolé com a gata",
+    title: "Passeio",
     price: 100,
   },
 ];

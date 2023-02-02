@@ -9,6 +9,7 @@ import { items } from "./data/items"
 import { getCurrentMounth, filterListByMonth } from "./services/dateFilter"
 import { InfoArea } from "./components/infoArea"
 import { TableArea } from "./components/TableArea"
+import { InputArea } from "./components/inputArea"
 
 function App() {
 
@@ -42,6 +43,13 @@ function App() {
     setCurrentMounth(newMonth)
   }
 
+  function handleAddItem(item: ItemType) {
+    let newList = [...listItems]
+    newList.push(item)
+
+    setListItems(newList)
+  }
+
   return (
     <S.Container>
       <Header />
@@ -52,6 +60,8 @@ function App() {
           income={income}
           expenses={expenses}
         />
+        <InputArea onAdd={handleAddItem} />
+
         <TableArea list={filteredListItems} />
       </S.ContentMain>
     </S.Container>
