@@ -1,55 +1,90 @@
 import * as S from "./styles"
 import { ItemType } from "../../types/ItemTypes"
 import { categories } from "../../data/categories"
-import { items } from "../../data/items";
+import { useState } from "react";
+
+import useDebounce from "../../hooks/useDebounce";
 
 interface inputAreaProps {
   onAdd: (item: ItemType) => void;
-  list: ItemType[]
-
 }
 
-export function InputArea({ onAdd, list }: inputAreaProps) {
-  function handleCreateANewItem() {
-    let newItem: ItemType = {
-      date: new Date(),
-      category: "food",
-      price: 100,
-      title: "lanche"
-    }
+export function InputArea({ onAdd }: inputAreaProps) {
+  const [data, setData] = useState("")
+  const [category, setCategory] = useState("food")
+  const [titleItem, setTitleItem] = useState("")
+  const [valueItem, setValueItem] = useState(0)
 
-    onAdd(newItem)
+  let categoryKeys: string[] = Object.keys(categories);
+  let debounceTitle = useDebounce(titleItem)
+
+  function formateDataForCreateANewItem(data: string) {
+    let [year, month, day] = data.split('-')
+    let dateFormatted = new Date(parseInt(year), parseInt(month), parseInt(day))
+    dateFormatted.setMonth(dateFormatted.getMonth() - 1)
+    return dateFormatted
+  }
+
+
+  function handleCreateANewItem() {
+
+    if (titleItem === "") {
+      alert("Por favor preencha um titulo")
+    } else {
+
+      onAdd({
+        date: formateDataForCreateANewItem(data),
+        category: category,
+        price: valueItem,
+        title: debounceTitle
+      })
+      clearFields()
+    }
+  }
+  function clearFields() {
+    setData("")
+    setCategory("food");
+    setValueItem(0)
+    setTitleItem("")
   }
 
   return (
     <S.Container>
       <S.InputLabel>
         <S.InputTitle>Data</S.InputTitle>
-        <S.Input type="date" />
+        <S.Input value={data} type="date" onChange={event => setData(event.target.value)} />
       </S.InputLabel>
       <S.InputLabel>
-        <S.InputTitle>Sategoria</S.InputTitle>
-        <S.Select>
-          <>
-            {list.map((item, index) =>
-              <option value="" key={index}>
-                {categories[item.category].title}
-              </option>
-            )}
-          </>
+        <S.InputTitle>Categoria</S.InputTitle>
+        <S.Select value={category} onChange={event => setCategory(event.target.value)}>
+
+          {categoryKeys.map((key, index) =>
+            <option
+              value={key}
+              key={index}
+            >
+              {categories[key].title}
+            </option>
+          )}
+
         </S.Select>
       </S.InputLabel>
       <S.InputLabel>
-        <S.InputTitle>Título</S.InputTitle>
-        <S.Input type="text" />
+        <S.InputTitle
+        >Título</S.InputTitle>
+        <S.Input type="text"
+          value={titleItem}
+          onChange={event => setTitleItem(event.target.value)} />
       </S.InputLabel>
       <S.InputLabel>
         <S.InputTitle>Valor</S.InputTitle>
-        <S.Input type="number" />
+        <S.Input type="number"
+          value={valueItem}
+          onChange={event => setValueItem(parseFloat(event.target.value))} />
       </S.InputLabel>
       <S.InputLabel>
         <S.InputTitle>&nbsp;</S.InputTitle>
-        <S.Button>Adicionar</S.Button>
+        <S.Button onClick={handleCreateANewItem}>Adicionar</S.Button>
       </S.InputLabel>
     </S.Container>
   )

@@ -60,7 +60,7 @@ function App() {
           income={income}
           expenses={expenses}
         />
-        <InputArea onAdd={handleAddItem} list={filteredListItems} />
+        <InputArea onAdd={handleAddItem} />
 
         <TableArea list={filteredListItems} />
       </S.ContentMain>
