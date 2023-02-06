@@ -12,7 +12,7 @@ export const categories: CategoryType = {
     expense: true,
   },
   salary: {
-    title: "Salario CLT",
+    title: "Salario",
     color: "#22c55e",
     expense: false,
   },
@@ -20,5 +20,25 @@ export const categories: CategoryType = {
     title: "CNH",
     color: "#6366f1",
     expense: true,
+  },
+  investiment: {
+    title: "Investimentos",
+    color: "#f59e0b",
+    expense: true,
+  },
+  aposta: {
+    title: "Apostas",
+    color: "#dc2626",
+    expense: true,
+  },
+  credit_card: {
+    title: "Cartão de credito",
+    color: "#4338ca",
+    expense: true,
+  },
+  external_work: {
+    title: "externo",
+    color: "#60a5fa",
+    expense: false,
   },
 };
