@@ -7,4 +7,5 @@ export const ContentMain = styled.main`
   margin-bottom: 50px;
   max-width: 980px;
   padding: 0 4rem;
+  /* overflow: hidden; */
 `;

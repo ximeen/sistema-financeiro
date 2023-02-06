@@ -30,8 +30,9 @@ export function InputArea({ onAdd }: inputAreaProps) {
 
     if (titleItem === "") {
       alert("Por favor preencha um titulo")
+    } if (data === "") {
+      alert("Por favor preencha uma data")
     } else {
-
       onAdd({
         date: formateDataForCreateANewItem(data),
         category: category,

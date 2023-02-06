@@ -9,6 +9,14 @@ export const Container = styled.div`
 
   display: flex;
   align-items: center;
+
+  @media (max-width: 830px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  @media (max-width: 666px) {
+    align-items: stretch;
+  }
 `;
 
 export const InputLabel = styled.label`
